@@ -6,7 +6,7 @@ window.CONFIG = {
 
   description: "Test how well you recognize UFC fighters. One attempt per face.",
 
-  datasetUrl: "", // add CSV next
+  datasetUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQl1RwMsKLP4lMDr5QK3f8LHgqAWdfEdlLP9Sz7TzvYebTD0ocMKe0lfX0rnP1z-sVPr1v3cf_8EsWi/pub?output=csv", 
 
   totalPerRound: 20,
   pointsPerCorrect: 10,
