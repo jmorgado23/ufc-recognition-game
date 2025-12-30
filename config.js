@@ -35,6 +35,6 @@ window.CONFIG = {
     { name: "Soccer", url: "https://soccerrecognitiongame.com" },
     { name: "UFC", url: "https://ufcrecognitiongame.com" },
     { name: "Celebrity", url: "https://celebrityrecognitiongame.com" }
-  ],
+  ]
 
 };
