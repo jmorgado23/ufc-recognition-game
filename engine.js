@@ -90,27 +90,24 @@ function submitGuess() {
   const normalizedCorrect = normalizeString(correctName);
   
   if (isCloseEnough(guess, correctName)) {
-    score += 10;
+    score += 1;
   
-    if (normalizedGuess === normalizedCorrect) {
-      feedback.innerText = "Correct! +10 points";
-    } else {
-      feedback.innerHTML = `Correct!<br><span class="small">${correctName}</span>`;
-    }
-  
+    feedback.innerHTML = `Correct!<br><span class="small">${correctName}</span>`;
     feedback.className = "correct";
+  
     gtag('event','submit_correct');
   } else {
-    feedback.innerText = `Incorrect. Correct answer: ${correctName}`;
+    feedback.innerHTML = `Incorrect!<br><span class="small">${correctName}</span>`;
     feedback.className = "incorrect";
+  
     gtag('event','submit_incorrect');
   }
-
   setTimeout(nextFace,1200);
 }
 
 function skip() {
-  feedback.innerText = `Incorrect. Correct answer: ${round[idx].name}`;
+  const correctName = round[idx].name;
+  feedback.innerHTML = `Incorrect!<br><span class="small">${correctName}</span>`;
   feedback.className = "incorrect";
   gtag('event','skip_face');
   setTimeout(nextFace,1200);
