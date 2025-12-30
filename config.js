@@ -28,4 +28,13 @@ window.CONFIG = {
     start: "#fbe9e7",
     end: "#ffccbc"
   }
+
+  relatedGames: [
+    { name: "NBA", url: "https://nbarecognitiongame.com" },
+    { name: "NFL", url: "https://nflrecognitiongame.com" },
+    { name: "Soccer", url: "https://soccerrecognitiongame.com" },
+    { name: "UFC", url: "https://ufcrecognitiongame.com" },
+    { name: "Celebrity", url: "https://celebrityrecognitiongame.com" }
+  ]
+
 };
