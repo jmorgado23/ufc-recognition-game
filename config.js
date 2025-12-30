@@ -18,9 +18,9 @@ window.CONFIG = {
   shareUrl: "https://ufcrecognitiongame.com",
 
   endMessages: [
-    { min: 160, text: "You really know your UFC." },
-    { min: 120, text: "Solid — but you missed some killers." },
-    { min: 80,  text: "You know the faces. The names are harder." },
+    { min: 16, text: "You really know your UFC." },
+    { min: 12, text: "Solid — but you missed some killers." },
+    { min: 8,  text: "You know the faces. The names are harder." },
     { min: 0,   text: "That was rough. Time to rewatch some fights." }
   ],
 
