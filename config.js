@@ -1,31 +1,31 @@
 window.CONFIG = {
-  siteName: "NBA Recognition Game",
+  siteName: "UFC Recognition Game",
 
-  title: "NBA Recognition Game",
-  subtitle: "How well do you recognize NBA players?",
+  title: "UFC Recognition Game",
+  subtitle: "How well do you recognize UFC fighters?",
 
-  description: "Test how well you recognize NBA players. One attempt per face.",
+  description: "Test how well you recognize UFC fighters. One attempt per face.",
 
-  datasetUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTYQt_cDhvn_wrz5Kaonhlx_BKEaD9dSdEAYpjWvnGVngn0HN7B0FoRRAuXXzWrLCy1rh3VStPCg-2_/pub?output=csv", 
+  datasetUrl: "", // add CSV next
 
   totalPerRound: 20,
   pointsPerCorrect: 10,
 
-  itemLabel: "Player",
+  itemLabel: "Fighter",
 
   shareTemplate:
-    "I scored {score} / {max} on NBA Recognition Game. Can you beat me?",
-  shareUrl: "https://nbarecognitiongame.com",
+    "I scored {score} / {max} on UFC Recognition Game. Can you beat me?",
+  shareUrl: "https://ufcrecognitiongame.com",
 
   endMessages: [
-    { min: 160, text: "You really know your NBA." },
-    { min: 120, text: "Solid — but you missed some legends." },
-    { min: 80,  text: "You know the faces. The names are tougher." },
-    { min: 0,   text: "That was rough. Time to brush up on NBA history." }
+    { min: 160, text: "You really know your UFC." },
+    { min: 120, text: "Solid — but you missed some killers." },
+    { min: 80,  text: "You know the faces. The names are harder." },
+    { min: 0,   text: "That was rough. Time to rewatch some fights." }
   ],
 
   background: {
-    start: "#fff1e6",
-    end: "#ffd8b5"
+    start: "#fbe9e7",
+    end: "#ffccbc"
   }
 };
