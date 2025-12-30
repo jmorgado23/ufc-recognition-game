@@ -155,3 +155,50 @@ function renderCrossLinks() {
   el.innerHTML = `Or try another recognition game:<br>${links}`;
 }
 
+function normalizeString(str) {
+  return str
+    .toLowerCase()
+    .normalize("NFD")                 // separate accents
+    .replace(/[\u0300-\u036f]/g, "") // remove accents
+    .replace(/[^a-z0-9\s]/g, "")     // remove punctuation
+    .replace(/\s+/g, " ")            // collapse spaces
+    .trim();
+}
+
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  if (m === 0) return n;
+  if (n === 0) return m;
+
+  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + cost
+      );
+    }
+  }
+  return dp[m][n];
+}
+
+function isCloseEnough(input, answer) {
+  const a = normalizeString(input);
+  const b = normalizeString(answer);
+
+  if (!a || !b) return false;
+  if (a === b) return true;
+
+  const distance = levenshtein(a, b);
+
+  // allow small typos based on length
+  if (b.length <= 5) return distance <= 1;
+  if (b.length <= 10) return distance <= 2;
+  return distance <= 3;
+}
