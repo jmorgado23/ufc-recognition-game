@@ -83,9 +83,9 @@ function loadImage(name) {
 }
 
 function submitGuess() {
-  const g = guessInput.value.trim().toLowerCase();
-  const c = round[idx].name.toLowerCase();
-  if (g === c) {
+  const guess = guessInput.value;
+  const correctName = round[idx].name;
+  if (isCloseEnough(guess, correctName)) {
     score += CONFIG.pointsPerCorrect;
     feedback.innerText = `Correct! +${CONFIG.pointsPerCorrect} points`;
     feedback.className = "correct";
