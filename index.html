@@ -8,29 +8,16 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="UFC Recognition Game" />
+<meta name="apple-mobile-web-app-title" content="NBA Recognition Game" />
 <link rel="manifest" href="/site.webmanifest" />
-  
+
 <!-- PRIMARY SEO -->
-<title>UFC Recognition Game – How Many UFC Fighters Can You Name?</title>
-<meta name="description" content="Test how well you recognize UFC fighters. A fun UFC recognition game with stars, legends, and hidden traps.">
+<title>NBA Player Recognition Game – How Many Can You Name?</title>
+<meta name="description" content="Test how well you recognize NBA players. A free online NBA player recognition game for basketball fans.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- CANONICAL -->
-<link rel="canonical" href="https://ufcrecognitiongame.com/">
-
-<!-- OPEN GRAPH -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="UFC Recognition Game">
-<meta property="og:description" content="How well do you recognize UFC players? Test your UFC knowledge.">
-<meta property="og:url" content="https://ufcrecognitiongame.com/">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/512px-Portrait_Placeholder.png">
-
-<!-- TWITTER -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="UFC Recognition Game">
-<meta name="twitter:description" content="How well do you recognize UFC players? One attempt per face.">
-<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/512px-Portrait_Placeholder.png">
+<link rel="canonical" href="https://nbarecognitiongame.com/">
 
 <!-- GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-939SPGF1FN"></script>
@@ -41,13 +28,12 @@
   gtag('config', 'G-939SPGF1FN');
 </script>
 
-<!-- GOOGLE ADSENSE (SITE VERIFICATION ONLY) -->
+<!-- GOOGLE ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4476665181510475"
      crossorigin="anonymous"></script>
 
-<!-- GOOGLE SEARCH CONSOLE (SITE VERIFICATION ONLY) -->
 <meta name="google-site-verification" content="4PD0EWbG50gmPnaDh7SeQ5iM5WoaHdlECKloumUBlc4">
-  
+
 <style>
 * { box-sizing: border-box; }
 
@@ -65,11 +51,45 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
   background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.content {
+  margin-bottom: 48px;
+}
+
+.content h1, .content h2 {
+  color: var(--text-main);
+}
+
+.content p, .content li {
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.ad-container {
+  margin: 24px 0;
+  padding: 14px;
+  background: #f5f6fb;
+  border-radius: 12px;
+}
+
+.ad-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.game {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -88,18 +108,15 @@ body {
 h1 {
   font-size: 30px;
   margin: 6px 0 10px;
-  color: var(--text-main);
 }
 
 h2 {
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-top: 32px;
 }
 
 p {
-  color: var(--text-muted);
   font-size: 16px;
-  line-height: 1.45;
 }
 
 .small {
@@ -121,9 +138,6 @@ p {
   border-radius: 18px;
   background: #f3f4fa;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 18px 0;
 }
 
@@ -131,8 +145,6 @@ p {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center top;
-  background-color: #f3f4fa;
 }
 
 input {
@@ -141,12 +153,6 @@ input {
   font-size: 18px;
   border-radius: 14px;
   border: 2px solid #e2e5f1;
-  outline: none;
-  margin-top: 8px;
-}
-
-input:focus {
-  border-color: var(--primary);
 }
 
 .buttons {
@@ -170,51 +176,17 @@ button {
   color: white;
 }
 
-.primary:hover {
-  background: var(--primary-dark);
-}
-
 .secondary {
   background: var(--secondary);
-  color: #333;
-}
-
-.secondary:hover {
-  background: #e3e6f2;
-}
-
-#feedback {
-  margin-top: 14px;
-  font-size: 17px;
-  font-weight: 600;
 }
 
 .correct { color: var(--success); }
 .incorrect { color: var(--error); }
 
-/* ---------- AD PREPARATION ---------- */
-.ad-container {
-  margin: 18px 0;
-  padding: 14px;
-  border-radius: 12px;
-  background: #f5f6fb;
-  font-size: 14px;
-  color: #888;
-}
-
-.ad-label {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 6px;
-}
-
 .site-footer {
-  position: fixed;
-  bottom: 12px;
-  width: 100%;
   text-align: center;
   font-size: 13px;
+  margin: 40px 0 20px;
   color: #777;
 }
 
@@ -222,99 +194,113 @@ button {
   color: #777;
   text-decoration: none;
 }
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<main class="page">
 
-  <!-- START -->
-  <div id="startScreen">
-    <h1 id="siteTitle"></h1>
-    <p id="siteSubtitle"></p>
-    <button class="primary" onclick="startRound()">Start round</button>
-    <p class="small">Minor typos accepted · One attempt per face</p>
-  </div>
+  <!-- ===== CONTENT (ADS SAFE) ===== -->
+  <section class="content">
+    <h1>NBA Player Recognition Game</h1>
 
-  <!-- GAME -->
-  <div id="gameScreen" class="hidden">
-    <div id="progress"></div>
+    <p>
+      The NBA Player Recognition Game is a free online quiz that challenges basketball fans
+      to identify NBA players from images. Test your knowledge of current stars and legendary
+      players from past eras.
+    </p>
 
-    <div class="image-wrapper">
-      <img id="celebrityImage" alt="Celebrity face">
-    </div>
+    <p>
+      Each round presents a series of NBA player photos. You have one attempt per face to type
+      the correct name. Minor spelling mistakes are accepted, but speed and accuracy matter.
+    </p>
 
-    <p id="imageStatus" class="small"></p>
-
-    <input id="guessInput" placeholder="Who is this?" autocomplete="off">
-
-    <div class="buttons">
-      <button class="primary" onclick="submitGuess()">Submit</button>
-      <button class="secondary" onclick="skip()">Skip</button>
-    </div>
-
-    <p id="feedback"></p>
-  </div>
-
-  <!-- END -->
-  <div id="endScreen" class="hidden">
-    <h2 id="headline"></h2>
-    <p id="finalScore"></p>
-
-    <!-- AdSense: End of Round -->
-    <div style="margin: 24px 0;">
+    <div class="ad-container">
+      <div class="ad-label">Advertisement</div>
       <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-4476665181510475"
-         data-ad-slot="AUTO"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+           style="display:block"
+           data-ad-client="ca-pub-4476665181510475"
+           data-ad-slot="AUTO"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
     </div>
 
-    <button class="primary" onclick="startRound()">Play again</button>
+    <h2>How the Game Works</h2>
+    <ul>
+      <li>You are shown 20 NBA player images per round.</li>
+      <li>Type the player’s name to submit your guess.</li>
+      <li>You earn one point for each correct answer.</li>
+      <li>The game ends after all players are shown.</li>
+    </ul>
 
-    <button class="secondary" onclick="shareScore()" style="margin-top:12px;">
-      Share your score
-    </button>
+    <p>
+      Think you know the NBA inside and out? From superstars to role players,
+      only true fans will get a perfect score.
+    </p>
+  </section>
 
-    <p class="small" id="crossLinks" style="margin-top: 18px;"></p>
-    
-  </div>
-  
-</div>
+  <!-- ===== GAME ===== -->
+  <section class="game">
+    <div class="app">
+
+      <!-- START -->
+      <div id="startScreen">
+        <h1 id="siteTitle"></h1>
+        <p id="siteSubtitle"></p>
+        <button class="primary" onclick="startRound()">Start round</button>
+        <p class="small">Minor typos accepted · One attempt per face</p>
+      </div>
+
+      <!-- GAME -->
+      <div id="gameScreen" class="hidden">
+        <div id="progress"></div>
+      
+        <div class="image-wrapper">
+          <img id="celebrityImage" alt="NBA player">
+        </div>
+      
+        <p id="imageStatus" class="small"></p>
+      
+        <input id="guessInput" placeholder="Who is this?" autocomplete="off">
+      
+        <div class="buttons">
+          <button class="primary" onclick="submitGuess()">Submit</button>
+          <button class="secondary" onclick="skip()">Skip</button>
+        </div>
+      
+        <p id="feedback"></p>
+      </div>
+
+      <!-- END -->
+      <div id="endScreen" class="hidden">
+        <h2 id="headline"></h2>
+        <p id="finalScore"></p>
+        <button class="primary" onclick="startRound()">Play again</button>
+        <button class="secondary" onclick="shareScore()" style="margin-top:12px;">
+          Share your score
+        </button>
+        <p class="small" id="crossLinks" style="margin-top: 18px;"></p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
 
 <footer class="site-footer">
-  <a href="/privacy.html">Privacy Policy</a>
+  <a href="/privacy.html">Privacy Policy</a> ·
+  <a href="/terms.html">Terms</a> ·
+  <a href="/contact.html">Contact</a>
 </footer>
 
 <script src="config.js"></script>
 <script src="engine.js"></script>
 
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

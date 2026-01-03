@@ -10,7 +10,6 @@ document.getElementById("siteTitle").innerText = CONFIG.title;
 document.getElementById("siteSubtitle").innerText = CONFIG.subtitle;
 
 let all = [], round = [], idx = 0, score = 0;
-const cache = {};
 
 fetch(CSV_URL).then(r => r.text()).then(t => all = parseCSV(t));
 
@@ -33,19 +32,27 @@ function parseCSV(csv) {
     return {
       name: o.full_name,
       aliases: o.aliases || "",
-      conf: Number(o.confidence_level)
+      conf: Number(o.confidence_level),
+      image_url: o.image_url
     };
-  }).filter(x => x.name);
+    }).filter(x => x.name && x.image_url);
 }
 
 const pick = (a,n) => [...a].sort(()=>Math.random()-0.5).slice(0,n);
 
 function buildRound() {
-  return [
-    ...pick(all.filter(x=>x.conf===5),6),
-    ...pick(all.filter(x=>x.conf===4),8),
-    ...pick(all.filter(x=>x.conf<=3),6)
-  ].sort(()=>Math.random()-0.5);
+  const anchors = pick(all.filter(x => x.conf === 5), 6);
+  const traps = pick(all.filter(x => x.conf === 4), 8);
+  const pressure = pick(all.filter(x => x.conf <= 3), 6);
+
+  let combined = [...anchors, ...traps, ...pressure];
+
+  if (combined.length < TOTAL) {
+    const remaining = all.filter(x => !combined.includes(x));
+    combined = combined.concat(pick(remaining, TOTAL - combined.length));
+  }
+
+  return combined.slice(0, TOTAL).sort(() => Math.random() - 0.5);
 }
 
 function startRound() {
@@ -58,32 +65,18 @@ function startRound() {
 }
 
 function showFace() {
-  progress.innerText = `${CONFIG.itemLabel} ${idx+1} of ${TOTAL} • Score ${score}`;
-  guessInput.value = "";
-  feedback.innerText = "";
-  feedback.className = "";
-  loadImage(round[idx].name);
-}
-
-function loadImage(name) {
-  imageStatus.innerText = "Loading image…";
-  if (cache[name]) {
-    celebrityImage.src = cache[name];
-    imageStatus.innerText = "";
+  if (!round[idx]) {
+    endRound();
     return;
   }
-  fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(name)}`)
-    .then(r=>r.json())
-    .then(d=>{
-      if (d.thumbnail?.source) {
-        cache[name]=d.thumbnail.source;
-        celebrityImage.src=d.thumbnail.source;
-        imageStatus.innerText="";
-      } else {
-        celebrityImage.src="";
-        imageStatus.innerText="Image not available";
-      }
-    });
+
+  progress.innerText = `${CONFIG.itemLabel} ${idx + 1} of ${TOTAL} • Score ${score}`;
+  guessInput.value = "";
+  feedback.innerHTML = "";
+  feedback.className = "";
+
+  celebrityImage.src = round[idx].image_url;
+  celebrityImage.style.display = "block";
 }
 
 function submitGuess() {
